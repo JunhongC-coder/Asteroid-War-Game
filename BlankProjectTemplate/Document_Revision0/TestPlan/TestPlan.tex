@@ -1,0 +1,464 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+}
+\usepackage[round]{natbib}
+
+\title{SE 3XA3: Test Plan\\Title of Project}
+
+\author{Team 12, Team Name
+		\\ Eric Thai thaie1
+		\\ Student 2 name and macid
+		\\ Student 3 name and macid
+}
+
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\listoftables
+\listoffigures
+
+\begin{table}[bp]
+\caption{\bf Revision History}
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+Date 1 & 1.0 & Notes\\
+Date 2 & 1.1 & Notes\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\pagenumbering{arabic}
+
+\section{General Information}
+
+\subsection{Purpose}
+The purpose of this test plan is to ensure that all functional and non-functional requirements are met as stated in the SRS. It is also describes the testing strategy for this project and the testing tools that will be used.
+
+\subsection{Scope}
+This document will outline the projects testing plan including the tools and approaches that will be used and a testing schedule. The document will also list the areas of the system that need to be tested to ensure the functional and non functional requirements are satisfied. Additionally there will be information on testing the POC and unit testing.
+\subsection{Acronyms, Abbreviations, and Symbols}
+	
+\begin{table}[hbp]
+\caption{\textbf{Table of Abbreviations}} \label{Table}
+
+\begin{tabularx}{\textwidth}{p{3cm}X}
+\toprule
+\textbf{Abbreviation} & \textbf{Definition} \\
+\midrule
+SRS & Software requirement Specification\\
+POC & Proof of Concept\\
+UI & User Interface\\
+\bottomrule
+\end{tabularx}
+
+\end{table}
+
+\begin{table}[!htbp]
+\caption{\textbf{Table of Definitions}} \label{Table}
+
+\begin{tabularx}{\textwidth}{p{3cm}X}
+\toprule
+\textbf{Term} & \textbf{Definition}\\
+\midrule
+Mocha & JavaScript testing library\\
+
+\bottomrule
+\end{tabularx}
+
+\end{table}	
+
+\subsection{Overview of Document}
+This Document will go through the test plan for our Improved version of the arcade game Asteroids. The document will go over our plans on testing the functional and non-functional requirements. It will also include a plan to test the POC and a unit testing plan.
+
+\section{Plan}
+	
+\subsection{Software Description}
+This software is a improved version of the classic arcade game Asteroids written in Javascript/HTML. This version of the game will refactor the code to improve the game's UI and allow for 2 players to play the game together.
+
+\subsection{Test Team}
+The test team includes Eric Thai,  Tianzheng Mai, Linqi Jiang, and Junhong Chen
+\subsection{Automated Testing Approach}
+Using Mocha we will create a set of Unit tests in Javascript to test the function of the software. This will handle the testing of the game's core logic. The front-end will be manually tested as we concluded that given it is a game, manual testing with user interaction is necessary. A manual test suite will be created to make sure that the software visually displays the correct result given a set of user inputs.
+\subsection{Testing Tools}
+Mocha is a Javascript testing library that allows for the creation of unit tests. Mocha can help us determine if the correct output of a function is produced given different inputs. It also keeps track of the time each test takes to complete.
+\subsection{Testing Schedule}
+		
+See Gantt Chart at the following url:
+\href{https://gitlab.cas.mcmaster.ca/mait6/3xa3-lab3-group-12/-/tree/master/BlankProjectTemplate/ProjectSchedule}{Gantt Chart}
+
+\section{System Test Description}
+	
+\subsection{Tests for Functional Requirements}
+
+\subsubsection{User Interface Testing}
+		
+\paragraph{Home Page}
+
+\begin{enumerate}
+
+\item{FR-UI-1\\}
+
+Type: Functional, Dynamic, Manual.
+					
+Initial State: A new empty tap on the browser.
+					
+Input: The project HTML link of the browser.
+					
+Output: The browser displays the home page of the Asteroid game.
+					
+How test will be performed: The testers must have a stable internet connection and a valid browser on the system to access this game.
+\\
+\end{enumerate}
+\paragraph{Battlefield}
+
+\begin{enumerate}					
+\item{FR-UI-2\\}
+
+Type: Functional, Manual
+					
+Initial State: Home Page
+					
+Input: The user selects a game mode and press space to start.
+					
+Output: The game page will display a battlefield with a suitable size on the screen.
+					
+How test will be performed: After the tester selects a game mode and press space to start, the game will generate a battlefield where the user can control the spaceship to fly on a battlefield with a suitable size on the screen.
+
+\end{enumerate}
+
+\paragraph{Spaceship}
+\begin{enumerate}					
+\item{FR-UI-3\\}
+
+Type: Functional, Manual
+					
+Initial State: Home Page
+					
+Input: The user selects a game mode and press space to start.
+					
+Output: The game page will display a spaceship on the screen.
+					
+How test will be performed:  After the tester selects a game mode and press space to start, the game will generate a spaceship.
+
+\end{enumerate}
+
+\paragraph{User Manual}
+\begin{enumerate}					
+\item{FR-UI-4\\}
+
+Type: Functional, Manual
+					
+Initial State: Home Page
+					
+Input: The user selects the user manual option on the home page.
+					
+Output: The screen will display a user manual page.
+					
+How test will be performed:  After clicking on the user manual option on the home page, the screen will display a list of game instructions and rules on the user manual page.
+
+\end{enumerate}
+
+\paragraph{Stop Option}
+\begin{enumerate}					
+\item{FR-UI-5\\}
+
+Type: Functional, Manual
+					
+Initial State: Game Page
+					
+Input: The user clicks on the stop button during the game.
+					
+Output: The game will pause after the user clicking on the stop button.  
+					
+How test will be performed:  The tester clicks on the stop button, and the game will pause.
+
+\end{enumerate}
+
+\paragraph{Score Test}
+\begin{enumerate}					
+\item{FR-UI-6\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: Game Page
+					
+Input: The user presses the space key to start the game.
+					
+Output: After the game starts, the game will display the scores of the game on the right-hand corner.
+					
+How test will be performed:  The testers need to select one player game mode or two player game mode to view if the scores are displayed on the asteroid screen.
+\end{enumerate}
+
+
+
+\subsubsection{Game Mechanics Testing}
+\paragraph{Spaceship Speed Test}
+\begin{enumerate}					
+\item{FR-GM-1\\}
+
+Type: Functional, Static
+					
+Initial State: Game Page
+					
+Input: The tester uses the keyboard to play the game.
+					
+Output: The spaceship should fly at the same speed as the same value of speed function in game.js and game2.js. 
+			
+How test will be performed:  The testers need to play the game multiple times to test if the speed of the spaceship is the same speed as the value of the speed function in game.js and game2.js. 
+\end{enumerate}
+
+\paragraph{Score Record}
+\begin{enumerate}					
+\item{FR-GM-2\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: Game Page
+					
+Input: The tester controls the spaceship attack the asteroids
+					
+Output: The scoring board will update the score simultaneously when the spaceship attacks the asteroids. 
+	
+How test will be performed:  The tester controls the keyboard to make the spaceship attack the asteroids and check if the scoring board is updated simultaneously. 
+\end{enumerate}
+
+\paragraph{Asteroid Allocation:}
+\begin{enumerate}					
+\item{FR-GM-3\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: Game Page
+					
+Input: The user selects game mode to start.
+					
+Output:  After the game started, the asteroid will be distributed in random areas of the battlefield.
+
+How test will be performed:  The tester plays the game manually and tests if the asteroids are distributed in random areas of the battlefield. 
+\end{enumerate}
+
+\paragraph{Lives Test:}
+\begin{enumerate}					
+\item{FR-GM-4\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: Game Page (Either 1 player mode or 2 player mode)
+					
+Input: Move the spaceship to hit an asteroid
+					
+Output:  The lives of the spaceship will be reduced by 1 or display a game over message.
+
+How test will be performed:  The tester need to control the keyboard to move the spaceship to hit an asteroid. If the original lives are greater than 1, the number of lives will be reduced by 1 after getting hit by an asteroid. If the original lives is 1, the screen will display a game over message after the spaceship is hit by an asteroid. 
+\end{enumerate}
+
+
+
+\subsection{Tests for Nonfunctional Requirements}
+
+\subsubsection{Gaming Quality}
+
+\paragraph{Usability and Humanity Requirement}
+
+\begin{enumerate}
+
+\item{NFR-UH-1\\}
+
+Type: Non-functional, Manual
+					
+Initial State: Game Page
+					
+Input/Condition: Multiple users who play the game. 
+
+Output/Result: User experience of the game effectiveness, efficiency and the overall satisfaction. 
+	
+How test will be performed: Multiple testers will be invited to play the game and provide feedback experience in the game effectiveness, efficiency and the overall satisfaction. 
+
+\end{enumerate}
+
+\paragraph{Performance Requirement}
+
+\begin{enumerate}
+
+\item{NFR-PR-1\\}
+
+Type: Non-functional, manual
+					
+Initial State: Game Page
+					
+Input/Condition: The user plays the game(either one player mode or two player mode) on the keyboard.
+
+Output/Result: The game is displayed on the screen. 
+	
+How test will be performed: Multiple testers will be invited to play the game in different modes and test whether the game can interact efficiently between the keyboard control and screen.  
+
+\end{enumerate}
+
+
+
+
+\subsubsection{System Quality}
+\paragraph{Operation and environment requirement}
+
+\begin{enumerate}
+
+\item{NFR-OE-1\\}
+
+Type: Non-functional, Dynamic, Manual
+					
+Initial State: Valid browsers
+					
+Input/Condition: The user tries to open the game in different popular browsers such as Firefox, Google Chrome, Microsoft Edge.
+
+Output/Result: The game should be operated and displayed in different browsers. 
+	
+How test will be performed: The tester runs the game in different browsers, but the game in different browsers should have a similar performance.  
+\end{enumerate}
+
+\paragraph{Maintainability and Support Requirement}
+
+\begin{enumerate}
+
+\item{NFR-MS-1\\}
+
+Type: Non-functional, Dynamic, Manual
+					
+Initial State: Windows system or macOS system
+					
+Input/Condition: The user runs the game in the Windows system and macOS system separately. 
+					
+Output/Result: The game should be operated correctly in both Windows systems and macOS systems. 
+					
+How test will be performed: The tester runs the game in both the Windows and macOS systems and the game should have a similar performance. 
+					
+
+\end{enumerate}
+
+\newpage
+
+\subsection{Traceability Between Test Cases and Requirements}
+\begin{table}[hbp]
+\caption{\textbf{Traceability Between Test Cases and Requirements}} \label{Table}
+
+\begin{tabularx}{\textwidth}{p{3cm}X}
+\toprule
+\textbf{Test Cases} & \textbf{Requirement} \\
+\midrule
+FR-UI-1 & Test whether the home page is displayed correctly on the browser\\
+FR-UI-2 & Test whether the battlefield is constructed as a suitable size on the screen\\
+FR-UI-3 & Test whether the game will generate a spaceship once it starts\\
+FR-UI-4 & Test whether the user manual is accessible on the main page\\
+FR-UI-5 & Test whether the stop option can pause the game\\
+FR-UI-5 & Test whether the scoring board is displayed properly on the game screen\\
+FR-GM-1 & Test whether the speed of the spaceship is the same as the value of the speed function in game.js and game2.js\\
+FR-GM-2 & Test whether the scoring board record the scores correctly\\
+FR-GM-3 & Test whether the asteroid is distributed correctly in the random areas of the battlefield\\
+FR-GM-4 & Test whether the lives of the spaceship displayed correctly on the screen\\
+NFR-UH-1 & Test the Usability and Humanity of the game\\
+NFR-PR-1 & Test the Performance of the game\\
+NFR-OE-1 & Test the Operation and Environment of the game\\
+NFR-MS-1 & Test the Maintainability and Support of the game\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+
+
+\section{Tests for Proof of Concept}
+
+\subsection{Movement}
+		
+\paragraph{Movement Testing}
+
+\begin{enumerate}
+
+\item{T-M-1\\}
+
+Type: Dynamic, Manual\\		
+	
+Initial State: pre-game stage\\
+
+Input:  User presses W-A-D, Shift, Up arrow, Right arrow, Left arrow and Space keys on the keyboard.\\
+					
+Output: User successfully controls spaceship’s movement and changes spaceship's position.\\
+					
+How test will be performed:  In the single-player mode, W-key pressed will let the spaceship accelerate and move forward. A-key will let the spaceship rotate to the left, and D-key pressed will let the spaceship rotate to the right. Space-key pressed will let the spaceship shoot a bullet forward. In two-player mode, the method of controlling the spaceship1 is the same as described above, while spaceship2 will be controlled by the Up arrow, Down arrow, Right arrow, Left arrow, and Shift keys. Up arrow key pressed will let the spaceship2 accelerate and move forward. Right arrow key pressed and left arrow key pressed will let the spaceship2 rotate to the left and rotate to the right, respectfully. Shift key pressed will let the spaceship2 shoot a bullet forward. Two Mcmaster University students will collaborate with us to do the testing. After we introduce how to play the game, they will play the game by pressing the keys described above on the keyboard. We will make sure each key will be pressed at least 20 times. \\
+
+\end{enumerate}
+
+\subsection{Score}
+\paragraph{Score Testing}
+
+\begin{enumerate}
+
+\item{T-S-1\\}
+Type: Functional, Manual\\
+
+Initial State: The Game is started by the user interface.\\
+
+input: The Game is played by clicking the play button from the user.\\
+
+output: The final scores is based on the number of asteroids that the spaceship has destroyed.\\
+
+How the test will be performed: A sample playthrough is made by the test at the beginning, the number of asteroids that destroyed will be recorded. The scores will be based on this number and the test will check if the output score matches this score.\\
+
+
+\end{enumerate}
+
+	
+\section{Comparison to Existing Implementation}	
+The existing implementation had no testing on the project. Thus, it is essential to create a set of unit test cases to validate the existing project and it can be also applied to the new features developed by our project. As extensive unit test cases are done to every component of the product, the usability and maintainability will be significantly raised which makes the product more reliable.
+				
+\section{Unit Testing Plan}
+		
+\subsection{Unit testing of internal functions}
+The javascript testing framework Jasmine will be applied for unit testing for internal functions in our project. There are many different types of functions that need to be tested. First of all, for the functions that return a value, the assertion method(expect.tobe)will be applied to check the output, exceptions will be raised according to the functions. Secondly, for the functions that do not return a value but include some kind of transitions,  the test will initialize different state variables, applied to the functions, and then the assertion method can be applied to the expected results to check whether the transition functions work properly. The results will be shown in the console by running jest. Once the file is saved, jest will inform the developer which test is failed, which is helpful to find potential issues before committing changes. For example, to check if the “HELP” button works properly, the test will apply few state variables and use the assertion method to check if the variable’s state is changed since it is hard to test the “HELP” button directly.
+
+\subsection{Unit testing of output files}		
+There are no output files from our project.
+
+\bibliographystyle{plainnat}
+
+\bibliography{SRS}
+
+\newpage
+
+\section{Appendix}
+
+Additional information.
+
+\subsection{Symbolic Parameters}
+
+N/A
+
+\subsection{Usability Survey Questions?}
+\begin{itemize}
+  	\item Is the difficulty of the game acceptable for you?
+	\item How long does it take for the user to load the game on the browser?
+	\item Are you satisfied with the control of the keys?
+	\item Does the user manual provide enough information for you to understand the game? 
+	\item Do you enjoy the User Interface (UI) of the game?
+	\item Does the game have good performance on your browser? Is there any delay in the game process?
+\end{itemize}
+
+
+\end{document}

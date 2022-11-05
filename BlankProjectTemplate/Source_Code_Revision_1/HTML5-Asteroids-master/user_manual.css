@@ -1,0 +1,49 @@
+body{
+    background-color: rgb(40, 37, 44);
+
+    color: #ffffff;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 2em;
+
+}
+.header{
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(63, 50, 66);
+    border-bottom: royalblue 3px solid;
+    padding: 20px;
+}
+.single_player{
+    text-align: center;
+}
+.two_player{
+    text-align: center;
+}
+button{
+    background-color: rgb(148, 138, 209);
+    color: rgb(0, 0, 0);
+    padding: 10px 30px;
+    font-size: 20px;
+}
+.fix{
+    position:fixed;
+    right: 5px;
+    bottom: 700px;
+}
+.block1 ul{
+    float:left;
+    width: 95%;
+    border: 2px solid #CCC;
+    box-sizing:content-box;
+    height: 320px;
+}
+
+.block2 ul{
+    float:left;
+    width: 46%;
+    border: 2px solid #CCC;
+    box-sizing:content-box;
+    height: 360px;
+}

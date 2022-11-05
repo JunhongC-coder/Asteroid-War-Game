@@ -1,0 +1,48 @@
+<html>
+    <head>
+      <link rel="stylesheet" href="main_style.css">
+      <script src="jquery-1.4.1.min.js"></script>
+      <script src="Hemi Head Rg_Bold Italic.js"></script>
+      <script src="ipad.js"></script>
+      <script src="game2.js"></script>
+      <style>
+        #game-container {position: relative;min-height: 100vh;background-size: cover;}
+        #canvas {border:1px solid rgb(244, 253, 255); position: absolute; top: 10px; left: 150px}
+        .button { position:absolute; border:1px solid black; }
+        #left-controls { position:absolute; left:1px; bottom:0px; display:none; }
+        #right-controls { position:absolute; right:1px; bottom:0px; display:none; }
+        #up { width:200px; height:100px; bottom:100px;}
+        #left { width:100px; height:100px; bottom:0px;}
+        #right { width:100px; height:100px; bottom:0px; left:100px; }
+        #space { width:200px; height:200px; bottom:0px; right:0px; }
+       </style>
+    </head>
+    <body>
+      <div class="heading">
+        <h1>
+          Asteroids -- two-player mode
+        </h1>
+      </div>
+      <div id="game-container">
+        <div class="t">
+          <p>press T to see the user manual</p>
+        </div>
+        <canvas id="canvas" width="1200" height="600"></canvas>
+        <div id="left-controls">
+          <div id="up" class='button'>THRUST</div>
+          <div id="left" class='button'>LEFT</div>
+          <div id="right" class='button'>RIGHT</div>
+        </div>
+        <div id="right-controls">
+          <div id="space" class='button'>FIRE</div>
+        </div>
+      </div>
+      <!--
+        add a button
+      -->
+      <div class="fix">
+        <button onclick="window.location.href='index.html'">Back</button>
+      </div>
+
+    </body>
+</html>

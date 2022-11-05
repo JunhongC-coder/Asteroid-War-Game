@@ -1,0 +1,38 @@
+body{
+    background-image: url('photos/new.jpg');
+    background-size: 1680px, 1400px;
+}
+.heading{
+    font-family: serif;
+    color: cornsilk;
+    text-align: center;
+    font-size: 23px;
+}
+.fix{
+    position:fixed;
+    right: 15;
+    top: 15;
+}
+button{
+    background-color: rgb(75, 105, 75);
+    color: rgb(221, 214, 208);
+    padding: 10px 30px;
+    font-size: 20px;
+}
+button:hover{
+    background-color: rgb(114, 129, 83);
+}
+button:active{
+    background-color: mintcream;
+    
+}
+.t{
+    font-family: serif;
+    color: rgb(181, 245, 192);
+    font-size: 30px;
+    float:left;
+    width: 9%;
+    border: 2px solid rgb(255, 164, 164);
+    box-sizing:content-box;
+    height: 220px;
+}

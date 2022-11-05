@@ -1,0 +1,101 @@
+\documentclass{article}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{csquotes}
+\title{SE 3XA3: Development Plan\\Title of Project}
+
+\author{Team 12, Team Name: 3XA3 Lab3 Group 12
+		\\ Tianzheng Mai and mait6
+		\\ Junhong Chen and chenj297
+		\\ Eric Thai and thaie1
+		\\ Linqi Jiang and jiangl21
+}
+
+\date{}
+
+
+
+\begin{document}
+
+\begin{table}[hp]
+\caption{Revision History} \label{TblRevisionHistory}
+\begin{tabularx}{\textwidth}{llX}
+\toprule
+\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
+\midrule
+Feb 3rd,2021 & Tianzheng Mai & Finish section 1,2,3,5\\
+Feb 3rd,2021 & Eric Thai & Finish Project Schedule section 8\\
+Feb 3rd,2021 & Linqi Jiang & Finish section 4\\
+Feb 3rd,2021 & Junhong Chen & Finish section 6,7\\
+Feb 5th,2021 & Tianzheng Mai & Review Latex code and push to Gitlab\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\maketitle
+
+This document provides the detailed information of project's development plan. There are nine sections: Team Meeting Plan, Team Communication Plan, Team Member Roles, Git Workflow Plan, Proof of Concept Demonstration Plan, Technology, Coding Style, Project Schedule, Project Review. 
+
+\section{Team Meeting Plan}
+The group meeting plans are held virtually and weekly through Microsoft Teams on Tuesday’s lab period from 7:00 pm to 9:00 pm and Thursday evening from 7:00 pm to 9:00 pm. All group members are responsible to present what they have worked on individually since the previous meeting. 
+\section{Team Communication Plan}
+The team will use McMaster Gitlab to organize the documents, codes, schedule, and other tasks. The team will use the Microsoft Team group private channel to communicate, hold meetings, and notify other team members to pull before they push. The team will also create a Messenger group chat for regular and emergent communication. 
+\section{Team Member Roles}
+Tianzheng Mai: Project Manager, Software Developer\\
+Eric Thai: Project Manager, Software Developer\\
+Junhong Chen: UI Developer, Software Tester\\
+Linqi Jiang: UI Developer, Software Tester\\
+
+\section{Git Workflow Plan}
+In this project, the team uses a centralized workflow plan. Instead of using the trunk, naming the default development branch master helps all changes commit into this branch. This workflow only requires a master branch, no other branches are required. There are a few advantages that using a centralized workflow plan in this project:
+
+\begin{itemize}
+  \item It would be very convenient for all team members. The team can copy the entire project to its local repo. In this regard, we can work independently and it gives us an isolated environment to develop our project. What's more, it is very convenient for us to add commits to our local repo, and the development of our branch will not infect our development process.
+  \item We can access git's robust branching and it is easy for us to merge our subversions. We do not need to send pull requests or forking patterns and it is good for smaller size teams(4 people).
+\end{itemize}
+
+The team will first clone the central repo and commit locally, which allows all members to be isolated from the central repo and the commits are stored locally. When it reaches the breakpoint, the team is able to push the local master branch to the central repo.
+\section{Proof of Concept Demonstration Plan}
+\subsection{Implementation}
+This Project will be implemented in a web browser, and it requires to use a keyboard to control Asteroids rocket.
+\subsection{Testing}
+This project will use JavaScript Unit Testing technique to test JavaScript code combined with HTML and execute it in a browser to check if all functionalities are working correctly. The Unit Testing Framework should be Unit.js which is a well-known open assertion library to execute on browser. 
+\subsection{User Interface}
+A better user interface can provide a higher game performance and significantly enhance the user experience. The team will develop a new interface which can be tested and viewed in a browser. It will require to improve the web page by changing the code of HTML and CSS.
+
+
+
+
+
+\section{Technology}
+\begin{itemize}
+  \item Programming language used: HTML, CSS, JavaScript
+  \item IDE: Visual Studios
+  \item Tool: Gitlab, Ubuntu
+  \item Documentation: Latex.
+  \item Testing framework: Jasmine(Javascript Testing Framework)
+\end{itemize}
+
+\section{Coding Style}
+\subsection{Variable Name}
+\begin{itemize}
+  \item The project uses camelCase for identifier names (variables and functions)
+  \item All variables should be written using camelcase. For example, math students should be written as mathStudents.
+  \item Names for the files should start with a letter and words should be concatenated by underscore. For example, The file containing code for the main page should be named \enquote{main\_page}.
+\end{itemize}
+\subsection{JavaScript}
+The coding style for JavaScript that the development team will adopt is Google JavaScript Style Guide
+
+
+
+\section{Project Schedule}
+
+The Gantt Chart file is placed under 3xa3-lab3-group-12/BlankProjectTemplate/ProjectSchedule
+
+\section{Project Review}
+N/A
+
+\end{document}

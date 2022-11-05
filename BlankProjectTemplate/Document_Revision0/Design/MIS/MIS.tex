@@ -1,0 +1,899 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{hyperref}
+\usepackage{xspace}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{tabularx}
+
+\newcommand{\latex}{\LaTeX\xspace}
+
+\oddsidemargin 0mm
+\evensidemargin 0mm
+\textwidth 160mm
+\textheight 200mm
+\renewcommand\baselinestretch{1.0}
+
+\pagestyle {plain}
+\pagenumbering{arabic}
+
+\newcounter{stepnum}
+
+\title{MIS}
+\author{Cldye}
+
+\begin {document}
+
+
+\newpage
+
+\section* {Matrix Module}
+
+\subsection*{Interface Module}
+
+Matrix
+
+\subsection* {Uses}
+
+None
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Types}
+
+None 
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+new Matrix & rows,column  & seq of $\mathbb{T}$ & ~\\
+\hline
+configure & rot, scale, transx, transy & set of $\mathbb{R}$ & ~\\
+\hline
+set & seq of $\mathbb{T}$ & ~ & ~\\
+\hline
+multiply & ~ & seq of $\mathbb{R}$ & ~\\
+\hline
+
+\end{tabular}
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+$row: \mathbb{R}$\\
+$column: \mathbb{R}$\\
+
+
+\subsubsection* {State Invariant}
+None
+
+\subsubsection* {Assumptions}
+
+The arguments provided to the access programs will be of the correct type.
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent new Matrix($row, column$):
+\begin{itemize}
+\item output: $out := data[row][column]$
+\item exception: None
+\end{itemize}
+
+\noindent configure($rot, scale, transx, transy$):
+\begin{itemize}
+\item output: $out := (cos(rot * \pi)/180 *scale ,-sin(rot * \pi)/180 *scale,transx ,sin(rot * \pi)/180 *scale,cos(rot * \pi)/180 *scale,transy )$
+\item exception: none
+\end{itemize}
+
+\noindent set($row, column$):
+\begin{itemize}
+\item transition: $data[row][column] = +i$
+\item output:None
+\item exception: None
+\end{itemize}
+
+\noindent set($row, column$):
+\begin{itemize}
+\item output:$out := (+i| data[i][j] * argument[j]: i = |data|)$
+\item exception: None
+\end{itemize}
+
+\newpage
+
+
+
+
+
+
+
+
+
+\section* {Sprite Module}
+
+\subsection*{Interface Module}
+
+Sprite
+
+\subsection* {Uses}
+
+None
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Types}
+
+None 
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+new Sprite & name,points  & seq of $\mathbb{S}$, seq of $\mathbb{R}$ & ~\\
+\hline
+run & delta & ~ & ~\\
+\hline
+move & seq of ~ & ~ & ~\\
+\hline
+updateGrid & ~ & ~ & ~\\
+\hline
+configureTransform & ~ & ~ & ~\\
+\hline
+draw & ~ & ~ & ~ \\
+\hline
+findCollisionCanidates & ~ & seq of $\mathbb{S}$ & ~\\
+\hline
+checkCollisionsAgainst & canidates & ~ & ~\\
+\hline
+checkCollision & other & seq of $\mathbb{B}$ & ~\\
+\hline
+pointInPolygon & x,y & seq of $\mathbb{R}$ & ~ \\
+\hline
+collision & ~ & ~ & ~ \\
+\hline
+die & ~ & ~ & ~ \\
+\hline
+transformedPoints & ~ & seq of array & ~ \\
+\hline
+isClear & ~ & seq of $\mathbb{B}$ & ~ \\
+\hline
+wrapPostMove & ~ & ~ & ~ \\
+\hline
+
+
+\end{tabular}
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+$children: Set$\\
+$visible: \mathbb{B}$\\
+$reap: \mathbb{B}$\\
+$bridgesH: \mathbb{B}$\\
+$bridgesV: \mathbb{B}$\\
+$collidesWith: Set$\\
+$x: \mathbb{N}$\\
+$y: \mathbb{N}$\\
+$rot: \mathbb{N}$\\
+$scale: \mathbb{N}$\\
+$currentNode: \mathbb{T}$\\
+$nextSprite: \mathbb{T}$\\
+$preMove: \mathbb{T}$\\
+$postMove: \mathbb{T}$\\
+
+
+\subsubsection* {State Invariant}
+None
+
+\subsubsection* {Assumptions}
+
+The arguments provided to the access programs will be of the correct type.
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent new Sprite($name, points$):
+\begin{itemize}
+\item output: $out := name, points$
+\item exception: None
+\end{itemize}
+
+\noindent run($delta$):
+\begin{itemize}
+\item transition: $x,y = currentNode.dupe.horizontal, currentNode.dupe.vertical$
+\item exception: none
+\end{itemize}
+
+\noindent move($delta$):
+\begin{itemize}
+\item transition: $rot += 360 || rot -= 360$
+\item exception: none
+\end{itemize}
+
+\noindent updateGrid():
+\begin{itemize}
+\item transition: $gridx, gridy = x / GRID\_SIZE, y / GRID\_SIZE$
+\item exception: None
+\end{itemize}
+
+\noindent configureTransform():
+\begin{itemize}
+\item transition: $rad = (rot * \pi)/180$
+\item exception: None
+\end{itemize}
+
+\noindent findCollisionCanidates():
+\begin{itemize}
+\item output:$out := canidates$
+\item exception: None
+\end{itemize}
+
+\noindent checkCollisionsAgainst(canidates):
+\begin{itemize}
+\item output:$out := canidates$
+\item exception: None
+\end{itemize}
+
+\noindent checkCollision(other):
+\begin{itemize}
+\item transition: $trans,px,py,count = transformedPoints(), trans[i*2], trans[i*2 + 1], trans.length/2$
+\item exception: None
+\end{itemize}
+
+\noindent pointInPolygon(x, y):
+\begin{itemize}
+\item output:$out := oddNodes$
+\item exception: None
+\end{itemize}
+
+\noindent die():
+\begin{itemize}
+\item output:$out := oddNodes$
+\item exception: None
+\end{itemize}
+
+\noindent transformedPoints():
+\begin{itemize}
+\item output:$out := trans$
+\item exception: None
+\end{itemize}
+
+\noindent isClear():
+\begin{itemize}
+\item output:out := isEmpty(this.collidesWith) \&
+			\\
+            north.isEmpty(this.collidesWith) \&
+            \\
+            south.isEmpty(this.collidesWith) \&
+            \\
+            east.isEmpty(this.collidesWith) \&
+            \\
+            west.isEmpty(this.collidesWith) \&
+            \\
+            north.east.isEmpty(this.collidesWith) \&
+            \\
+            north.west.isEmpty(this.collidesWith) \&
+            \\
+            south.east.isEmpty(this.collidesWith) \&
+            \\
+            south.west.isEmpty(this.collidesWith)
+\item exception: None
+\end{itemize}
+
+\noindent wrapPostMove():
+\begin{itemize}
+\item transition: $x, y = canvasWidth, canvasHeight$
+\item exception: None
+\end{itemize}
+
+\newpage
+
+
+
+
+
+
+
+
+\section* {Ship Module}
+
+\subsection*{Interface Module}
+
+Ship,SFX,FSM
+
+\subsection* {Uses}
+
+None
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Types}
+
+None 
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+new Ship & ~ & Ship  & ~\\
+\hline
+collidesWith & ~ & seq of String & ~\\
+\hline
+premove & delta & ~  & ~\\
+\hline
+collision & other & ~ & ~ \\
+\hline
+
+\end{tabular}
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+None
+
+
+\subsubsection* {State Invariant}
+None
+
+\subsubsection* {Assumptions}
+
+The arguments provided to the access programs will be of the correct type.
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent new Ship():
+\begin{itemize}
+\item output: $out := ("ship",[-5,4,0,-12,5,4])$
+\item exception: None
+\end{itemize}
+
+\noindent collidesWith():
+\begin{itemize}
+\item output: $out := (["asteroid","bigalian","alieanbullet"])$
+\item exception: None
+\end{itemize}
+
+\noindent premove(delta):
+\begin{itemize}
+\item transition: $(KEYSTATUS.left = True \implies vel.rot = 6 | KEYSATUS.right = True \implies vel.rot = -6 | vel.rot = 0)$\\
+$(KEYSTATUS.up = True \implies acc.x = 0.5*cos(rad) \wedge acc.y = 0.5 * sin(rad) \wedge children.exhaust.visible = random() > 0.1| acc.x = 0 \wedge acc.y = 0 \wedge children.exhuast.visible = False)$\\
+where rad = (rot - 90) * $\pi$ / 180\\
+$(bulletCounetr $>$ 0 \implies buuletCounter = bulletCounter - delta)$\\
+$(KEYSTATUS.space \implies(bulletCounter <=0 \implies bulletCounter = 10 \wedge x = x + vectorx *4 \wedge y = y + vector * 4 \wedge vel.x = 6 * vectorx + vel.x \wedge vel.y = 6*vertory + vel.y \wedge visible = True ))$\\
+where rad = (rot - 90) * $\pi$ / 180 , vector x = cos(rad),vector y = sin(rad)\\
+$\sqrt{vel.x * vel.x + vel.y * vel.y}$ $>$ 8 $\implies$ vel.x = 8 $\wedge$ vel.y =8\\
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent collison(other):
+\begin{itemize}
+\item transition: $call function SFX.explosion() and Game.explosionAt(other.x,other.y)$\\
+$Game.FSM.state, visble,currentNode = 'playerdied' , false, null$\\
+Finally call Game.live to make sure the game still in progress.\\
+\item output: None
+\item exception: None
+\end{itemize}
+
+\newpage
+
+\section* {BigAlien Module}
+
+\subsection*{Interface Module}
+
+Ship,Sprite
+
+\subsection* {Uses}
+
+None
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Types}
+
+None 
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+new BigAlien & ~ & BigAlien  & ~\\
+\hline
+top & ~ & Sprite & ~\\
+\hline
+bottom & ~ & Sprite  & ~\\
+\hline
+setup & ~ & newPosition & ~ \\
+\hline
+preMove & delta & ~ & ~\\
+\hline
+postmove & y & ~ & ~\\
+\hline
+Bulletcounter & bullets & ~ & ~\\
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+None
+
+
+\subsubsection* {State Invariant}
+None
+
+\subsubsection* {Assumptions}
+
+The arguments provided to the access programs will be of the correct type.
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent new BigAlien():
+\begin{itemize} 
+\item output: $out := ("bigalien",[-20,0,-12,-4,12,-4,20, 0, 12, 4,-12 ,4, -20, 0, 20 ,0])$
+\item exception: None
+\end{itemize}
+
+\noindent top():
+\begin{itemize} 
+\item output: $out := ("bigalien",[-8,-4,-6,-6,6,-6,8,-4])$
+\item exception: None
+\end{itemize}
+
+\noindent bottom():
+\begin{itemize} 
+\item output: $out := ("bigalien",[8,4,6,6,-6,6,-8,4])$
+\item exception: None
+\end{itemize}
+
+
+
+\noindent setup():
+\begin{itemize} 
+\item output: $newPosition()$
+\item exception: None
+\end{itemize}
+
+
+\noindent premove():
+\begin{itemize} 
+\item transition: $(topCount = 0 \implies topCount + 1)$\\
+$(bottomCount = 0 \implies bottomCount + 1)$\\
+$(topCount $>$ bottomCount \implies vel.y = 1 | randomnum < 0.01)$\\
+\item output: None
+\item exception: $cn = 0 \implies None$
+\end{itemize}
+
+\noindent bulletCounter():
+\begin{itemize}
+\item output := $bullet.x, bullet.y , bullet.vel.x, bullet.vel.y, visible  = x,y,6 * vectorx , 6 * vetory, true$\\
+$SFX().laser$\\
+where rad = 2 * $\pi$ * random\\
+where vectorx = cos(rad)\\
+where vectory = sin(rad)\\
+\item exception: None
+\end{itemize}
+
+\newpage
+
+\section* {Bullet Module}
+
+\subsection*{Interface Module}
+
+Ship,Sprite
+
+\subsection* {Uses}
+
+None
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Types}
+
+None 
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+new Bullet & ~ & Bullet  & ~\\
+\hline
+draw & visible & ~ & ~\\
+\hline
+premove & delta & ~  & ~\\
+\hline
+collision & other & ~ & ~ \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+None
+
+
+\subsubsection* {State Invariant}
+None
+
+\subsubsection* {Assumptions}
+
+The arguments provided to the access programs will be of the correct type.
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent new Bulllet():
+\begin{itemize}
+\item transition:$time, bridgesH, bridgesV , postMove = 0,false,false$ 
+\item output: $out := ("bullet",[0,0])$
+\item exception: None
+\end{itemize}
+
+\noindent draw():
+\begin{itemize}
+\item transition:$lineWidth,strokeStyle = 15,"FF0000"$\\
+call save(), beginPath(),moveTo(x-1,y-1),lineTo(x+1,y+1),moveTo(x+1, y-1),lineTo(x-1,y+1),stroke(),restore();
+\item output : None
+\item exception : None
+\end{itemize}
+
+\noindent preMove(delta):
+\begin{itemize}
+\item transition:$(visible = True \implies time + delta | time > 50 \implies visible = false \wedge time = 0)$
+\item output: None
+\item exception: None
+\end{itemize}
+
+
+\noindent collision(other):
+\begin{itemize}
+\item transition:$time , visible = 0, false$\\
+call currentNode.leave(), currentNode\\
+\item output: None
+\item exception: None
+\end{itemize}
+
+\newpage
+
+\section* {AlienBullet Module}
+
+\subsection*{Interface Module}
+
+AlienBullet
+
+\subsection* {Uses}
+
+Bullet
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Types}
+
+None 
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+new AlienBullet & ~  & seq of $\mathbb{S}$ & ~\\
+\hline
+draw & ~ & ~ & ~\\
+\hline
+
+
+\end{tabular}
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+none
+\subsubsection* {State Invariant}
+None
+
+\subsubsection* {Assumptions}
+
+The arguments provided to the access programs will be of the correct type.
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent new AlienBullet():
+\begin{itemize}
+\item output: $out := "alientbullet"$
+\item exception: None
+\end{itemize}
+
+\noindent run($delta$):
+\begin{itemize}
+\item transition: $lineWidth,strokeStyle = 2, 'FFA07A'$
+\item exception: none
+\end{itemize}
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section* {Asteroid Module}
+
+\subsection*{Interface Module}
+
+Asteroid
+
+\subsection* {Uses}
+
+Sprite
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Types}
+
+None 
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+new Sprite & "asteroid",[-10,   0,
+              -5,   7,
+              -3,   4,
+               1,  10,
+               5,   4,
+              10,   0,
+               5,  -6,
+               2, -10,
+              -4, -10,
+              -4,  -5]  & seq of $\mathbb{S}$, array & ~\\
+\hline
+collision & other & ~ & ~\\
+
+\end{tabular}
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+
+$visible: \mathbb{B}$\\
+$scale: 6$\\
+$postMove: \mathbb{T}$\\
+$collidesWith: array$\\
+
+\subsubsection* {State Invariant}
+None
+
+\subsubsection* {Assumptions}
+
+The arguments provided to the access programs will be of the correct type.
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent new Asteroid():
+\begin{itemize}
+\item output: $out := "asteroid", [-10,   0,
+              -5,   7,
+              -3,   4,
+               1,  10,
+               5,   4,
+              10,   0,
+               5,  -6,
+               2, -10,
+              -4, -10,
+              -4,  -5]$
+\item exception: None
+\end{itemize}
+
+\noindent collision($other$):
+\begin{itemize}
+\item transition: $scale, vel.x, vel.y, vel.rot = scale/3,random() * 6 - 3, random() * 6 - 3, random() * 2 - 1$
+\item exception: none
+\end{itemize}
+
+\newpage
+
+\section* {Explosion Module}
+
+\subsection*{Interface Module}
+
+Ship,Sprite
+
+\subsection* {Uses}
+
+None
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Types}
+
+None 
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+new Explosion & ~ & Explosion  & ~\\
+\hline
+lines & R & ~ & ~\\
+\hline
+draw & R & ~  & ~\\
+\hline
+preMove & R,R & ~ & ~ \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+None
+
+
+\subsubsection* {State Invariant}
+None
+
+\subsubsection* {Assumptions}
+
+The arguments provided to the access programs will be of the correct type.
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent lines(other):
+\begin{itemize}
+\item transition:$lines.push([x,y,x*2,y*2])$\\
+where x is cos(rad) and y is sin(rad) ard is 2 * $\pi$ * random\\
+call currentNode.leave(), currentNode\\
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent draw(scale):
+\begin{itemize}
+\item transition:$lineWidth = 1.0/scale, strokeStyle = "B22222"$
+call save(),beginPath(),stroke() and restore()
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent preMove(delta):
+\begin{itemize}
+\item transition:$(visible = True \implies scale + delta | scale > 9 \implies die())$
+\item output: None
+\item exception: None
+\end{itemize}
+
+\section* {GridNode}
+
+\subsection*{Interface Module}
+
+Ship,Sprite
+
+\subsection* {Uses}
+
+None
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Types}
+
+None 
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+enter & sprite & sprite  & ~\\
+\hline
+leave & sprite & ~& ~ \\
+\hline
+eachSprite &sprite, other & ~  & ~\\
+\hline
+isEmpty & int[] & boolean & ~ \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+None
+
+
+\subsubsection* {State Invariant}
+None
+
+\subsubsection* {Assumptions}
+
+The arguments provided to the access programs will be of the correct type.
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent  enter(sprite):
+\begin{itemize}
+\item transition:$nextSprite = sprite.nextSprite$
+\item output: nextSprite
+\item exception: None
+\end{itemize}
+
+\noindent  leave(sprite):
+\begin{itemize}
+\item transition: $ ref \land (ref.nextSprite != sprite) \implies ref.nextSprite$
+call save(),beginPath(),stroke() and restore()
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent eachSprite(sprite, callback)
+\begin{itemize}
+\item transition:$(ref.nextSprite != null \implies callback.call(sprite, ref))$
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent isEmpty(collidables)
+\begin{itemize}
+\item transition:$(empty != ref.visible \lor collidables.indexOf(ref.name)==-1 \implies  empty)$
+\item output: empty
+\item exception: None
+\end{itemize}
+
+
+
+
+\end {document}
